@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <% if admin_signed_in? %>
+      <%= render 'layouts/signin_admin_header' %>
+    <% elsif user_signed_in? %>
+      <%= render 'layouts/signin_user_header' %>
+    <% else %>
+      <%= render 'layouts/signout_header' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
