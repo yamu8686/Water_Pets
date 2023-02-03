@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :public do
-    get 'creatures/index'
-    get 'creatures/show'
-    get 'creatures/edit'
+    resources :creatures, only: [:index, :show, :edit, :create, :update]
   end
   namespace :admin do
-    get 'genres/new'
-    get 'genres/index'
-    get 'genres/edit'
+    resources :genres, only: [:new, :index, :edit, :create, :update]
   end
   # 管理者用
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
