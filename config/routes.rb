@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+root to: "homes#top"
    # 管理者用
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -10,24 +10,18 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
   namespace :public do
     resources :users, only: [:index, :show, :edit, :create, :update]
-  end
-
-  namespace :public do
     resources :creatures, only: [:index, :show, :edit, :create, :update]
-  end
 
-  namespace :public do
-    root to: "homes#top"
     get "/about" => "homes#about",as: "about"
   end
 
   namespace :admin do
     resources :genres, only: [:new, :index, :edit, :create, :update]
   end
- 
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
