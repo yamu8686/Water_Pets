@@ -59,16 +59,19 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  def after_sign_in_path_for(resource)
-    about_path
-  end
-
-  def after_sign_out_path_for(resource)
-    about_path
-  end
-
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+  
+  def after_sign_in_path_for(resource)
+    public_about_path
+  end
+
+  def after_sign_out_path_for(resource)
+    public_about_path
+  end
+
+  
+  
 
 end
