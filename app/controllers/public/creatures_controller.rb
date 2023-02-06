@@ -1,6 +1,6 @@
 class Public::CreaturesController < ApplicationController
   def index
-    @creature = Creture.new
+    #@creature = Creture.new
     @creatures = Creature.all
     @user = current_user
   end

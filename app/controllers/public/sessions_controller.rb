@@ -27,7 +27,7 @@ class Public::SessionsController < Devise::SessionsController
     # アカウントが取得できなかった場合、このメソッドを終了する
     return if !@user
     # [処理内容2] 取得したアカウントのパスワードが一致しているかを判別
-    if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false) #有効なパスワードか確認する true && !false
+    if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true) #有効なパスワードか確認する true && !false
       flash[:notice] = "退会済みです。再度ご登録お願いします。"
       # [処理内容3]
       redirect_to new_user_session_path
@@ -35,13 +35,13 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
-    public_about_path
+    about_path
   end
   def after_sign_out_path_for(resource)
-    public_about_path
+    root_path
   end
 
-  protected
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys:[:name])
