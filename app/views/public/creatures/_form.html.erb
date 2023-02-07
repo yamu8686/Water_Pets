@@ -1,0 +1,20 @@
+<%= form_with model:(Creature.new),local:true do |f| %>
+  <h4>画像</h4>
+  <div class="form-group">
+    <f.file_field :image, accept: "image/*" %>
+  </div>
+  <h4>生体名</h4>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control creature_name" %>
+  </div>
+  <h4>生体説明</h4>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control creature_description' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "投稿する" class: "btn btn-success" %>
+  </div>
+<% end %>
+  

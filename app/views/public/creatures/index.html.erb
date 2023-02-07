@@ -2,7 +2,14 @@
   <div class="row">
     <div class="col-md-3">
       <h2>ユーザー情報</h2>
+      <%= render 'public/users/info', user: @user %>
+      <h2 class="mt-3">生体投稿</h2>
+      <render 'form', creature: @creature %>
+    </div>
 
+    <div class="col-md-8 offset-md-1">
+      <h2>生物一覧</h2>
+      <%= render "index", creatures: @creatures %>
     </div>
   </div>
 </div>

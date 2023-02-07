@@ -2,22 +2,35 @@
   <div class="row">
     <div class="col-md-3">
       <h2>ユーザー情報</h2>
-      <%#=render 'users/info', user: @creture.user %>
+      <%=render 'users/info', user: @creture.user %>
       <h2>生体飼育</h2>
       <%#= render 'cretures/list', creture: Creature.new %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2>生体飼育情報一覧</h2>
+      <h2>生体飼育情報</h2>
       <table class="table">
         <tbody>
           <tr>
             <td>
               <%= link_to user_path(@creature.user.id) do %>
-                <%= image_tag currect_user.get_profile_image(100,100) %>
+                <%= image_tag creature.image, size: "100×100" %>
+                <%= @creature.user.name %>
+              <% end %>
             </td>
+            <td><%= link_to @creature.name, @creature %></td>
+            <td><%= @creature.description %></td>
+            
+            <% if @creature.user == current_user %>
+              <td><%= link_to "編集する", edit_creature_path(@creature), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to "削除する", @creature, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %></td>
+            <% end %>
           </tr>
         </tbody>
       </table>
+      <div class="comments-index">
+        <%= render "comments/index", creature: @creature %>
+      </div>
+      <%= render "comments/form", creature: @creature, comment: @comment %>
     </div>
   </div>
 </div>
