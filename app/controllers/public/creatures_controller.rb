@@ -1,13 +1,17 @@
 class Public::CreaturesController < ApplicationController
+
+  def new
+    @creature = Creature.new
+  end
+
   def index
-    #@creature = Creture.new
     @creatures = Creature.all
     @user = current_user
   end
 
   def create
-    @creature = Creature.new(creature_params)
-    @creature.user.id = currect_user.id
+    @creature = Creature.new(creature_params) #投稿するデータをcreatureモデルに紐づくデータとして保存する準備
+    @creature.user.id = currect_user.id　#投稿データに今ログイン中のユーザーのIDを持たせる
     if @creature.save
       flash[:notice] = "投稿に成功しました"
       redirect_to creature_path(@creature)
@@ -22,7 +26,7 @@ class Public::CreaturesController < ApplicationController
     @creatures = Creature.all
     @creature = Creature.find(params[:id])
     @user = current_user
-    @comment = Comment.new 
+    @comment = Comment.new
   end
 
   def edit
@@ -30,6 +34,7 @@ class Public::CreaturesController < ApplicationController
   end
 
   private
+ 
   def creature_params
     params.require(:creature).permit(:name, :description, :image)
   end
