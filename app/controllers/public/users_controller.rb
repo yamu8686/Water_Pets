@@ -1,14 +1,22 @@
 class Public::UsersController < ApplicationController
   def index
     @users = User.all
-    @user = User.new 
+    @user = User.new
   end
 
   def show
-    
+    @user = User.find(params[:id])
+    @creatures = @user.creatures
+    @creature = Creature.new
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
+end
+
+private
+
+def user_params
+  params.require(:user).permit(:name, :profile_image)
 end

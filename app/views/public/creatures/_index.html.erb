@@ -12,16 +12,16 @@
       <tr>
         <td>
         <% if creature.image.attached? %>
-          <%= link_to creature_path(creature.id) do %>
-          <%= image_tag creature.image, size: "100×100" %>
+          <%= link_to public_creature_path(creature.id) do %>
+          <%= image_tag creature.image, size: "50×50" %>
           <% end %>
         <% else %>
-          <%= link_to creature_path(creature.id) do %>
-          <%= image_tag "no_image", size: "100×100" %>
+          <%= link_to public_creature_path(creature.id) do %>
+          <%= image_tag "no_image", size: "50×50" %>
           <% end %>
         <% end %>
       </td>
-      <td><%= link_to creature.name,creature %></td>
+      <td><%= link_to creature.name,public_creature_path(creature.id) %></td>
       <td><%= creature.description %></td>
       </tr>
     <% end %>

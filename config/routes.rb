@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  namespace :admin do
+    get 'creatures/index'
+    get 'creatures/show'
+    get 'creatures/edit'
+  end
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
   root to: "homes#top"
   get "/about" => "homes#about",as: "about"
    # 管理者用
@@ -13,11 +24,15 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
-    resources :users, only: [:index, :show, :edit, :create, :update]
-    resources :creatures, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
-      resources :comments, only: [:create, :destroy]
+    resources :users, only: [:index, :show, :edit, :create, :update]do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
 
+    resources :creatures, only: [:index, :show, :edit, :create, :update, :destroy] do
+      resources :post_comments, only: [:create, :destroy]
+    end
   end
 
   namespace :admin do

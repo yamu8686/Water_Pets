@@ -6,11 +6,11 @@
   </tr>
   <tr>
     <th>フォロー</th>
-    <th><%#= user.followings.count %></th>
+    <th><%= user.followings.count %></th>
   </tr>
   <tr>
     <th>フォロワー</th>
-    <th><%#= user.followers.count %></th>
+    <th><%= user.followers.count %></th>
   </tr>
 </table>
 <%= link_to edit_public_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>

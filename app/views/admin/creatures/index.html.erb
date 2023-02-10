@@ -1,0 +1,11 @@
+<% @creatures.each do |t| %>
+  <% if user_signed_in? %>
+    <% if current_user.id == t.user_id %>
+      <%= link_to "編集する", edit_creature_path(t.id) %>
+      <%= link_to "削除する", creature_path(t.id), method: :delete %>
+    <% elsif current_user.admin? %>
+      <%= link_to "管理者用編集", edit_creature_path(t.id) %>
+      <%= link_to "管理者用削除", creature_path(t.id), method: :delete %>
+    <% end %>
+  <% end %>
+<% end %>
