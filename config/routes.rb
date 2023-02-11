@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'creatures/index'
-    get 'creatures/show'
-    get 'creatures/edit'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
   root to: "homes#top"
   get "/about" => "homes#about",as: "about"
    # 管理者用
@@ -38,7 +28,16 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:new, :index, :edit, :create, :update]
   end
-
+  namespace :admin do
+    get 'creatures/index'
+    get 'creatures/show'
+    get 'creatures/edit'
+  end
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

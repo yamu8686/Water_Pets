@@ -12,11 +12,18 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @user = User.find(params[:id])
   end
-end
 
-private
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to public_user_path(@user)
+  end
 
-def user_params
-  params.require(:user).permit(:name, :profile_image)
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :profile_image)
+  end
 end
