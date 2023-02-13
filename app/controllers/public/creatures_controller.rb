@@ -34,9 +34,13 @@ class Public::CreaturesController < ApplicationController
   end
 
   def update
-    creature = Creature.find(params[:id])
-    creature.update(creature_params)
-    redirect_to public_creature_path(creature.id)
+    @creature = Creature.find(params[:id])
+    if @creature.update(creature_params)
+      redirect_to public_creature_path(@creature.id)
+    else
+      @creatures = Creature.all
+      render :edit
+    end
   end
 
   def destroy

@@ -17,8 +17,12 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to public_user_path(@user)
+    if @user.update(user_params)
+      redirect_to public_user_path(@user)
+    else
+      @users = User.all
+      render :edit
+    end
   end
 
   private

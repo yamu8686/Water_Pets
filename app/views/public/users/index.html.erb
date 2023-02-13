@@ -35,6 +35,7 @@
               </td>
               <% end %>
               <td>
+                <!--自分はフォローできないようにする-->
                 <% if current_user != user %>
                   <% if current_user.followings?(user) %>
                     <%= link_to "フォロー外す", public_user_relationships_path(user.id), method: :delete %>

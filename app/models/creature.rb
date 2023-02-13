@@ -6,6 +6,9 @@ class Creature < ApplicationRecord
 
   has_one_attached :image
 
+  validates :name, presence: true
+  validates :description, presence: true
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

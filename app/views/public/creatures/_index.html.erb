@@ -12,8 +12,8 @@
       <tr>
         <td>
         <% if creature.image.attached? %>
-          <%= link_to public_creature_path(creature.id) do %>
-          <%= image_tag creature.image, size: "50×50" %>
+          <%= link_to public_creature_path(creature.id), style:"display:block" do %>
+          <%= image_tag creature.image, class: "img-fluid" if @creature.image.present? %>
           <% end %>
         <% else %>
           <%= link_to public_creature_path(creature.id) do %>

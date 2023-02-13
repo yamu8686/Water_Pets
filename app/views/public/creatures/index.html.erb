@@ -9,6 +9,16 @@
 
     <div class="col-md-8 offset-md-1">
       <h2>生物一覧</h2>
+
+      <% if @creature.errors.any? %>
+        <%= @creature.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
+
       <%= render 'index', creatures: @creatures %>
     </div>
   </div>

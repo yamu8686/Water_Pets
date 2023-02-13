@@ -8,6 +8,11 @@ class Public::PostCommentsController < ApplicationController
     redirect_to public_creature_path(creature)
   end
 
+  def destroy
+    PostComment.find(params[:id]).destroy
+    redirect_to public_creature_path(params[:creature_id])
+  end
+
   private
 
   def post_comment_params
