@@ -13,7 +13,7 @@
         <td>
         <% if creature.image.attached? %>
           <%= link_to public_creature_path(creature.id), style:"display:block" do %>
-          <%= image_tag creature.image, class: "img-fluid" if @creature.image.present? %>
+          <%= image_tag creature.get_image(200, 100), class: "img-fluid" if creature.image.present? %>
           <% end %>
         <% else %>
           <%= link_to public_creature_path(creature.id) do %>
@@ -23,6 +23,11 @@
       </td>
       <td><%= link_to creature.name,public_creature_path(creature.id) %></td>
       <td><%= creature.description %></td>
+      <td>
+        <% creature.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </td>
       </tr>
     <% end %>
   </tbody>

@@ -25,6 +25,12 @@
               <% end %>
             </td>
 
+            <td>
+              <% @creature.tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+            </td>
+
             <td><%= link_to "#{@creature.post_comments.count} コメント", public_creature_path(@creature.id) %></td>
 
             <% if @creature.user == current_user %>

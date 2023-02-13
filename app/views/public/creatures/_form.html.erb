@@ -11,6 +11,39 @@
   <div class="form-group">
     <%= f.text_area :description, class: 'form-control creature_description' %>
   </div>
+  <h4>飼育難易度</h4>
+
+  <div class="row">
+    <div class"col-12 position-static">
+      <div id="post_raty"></div>
+    </div>
+  </div>
+  <script>
+    // scriptファイルをどのidの部分に配置するかを指定
+    let elem = document.querySelector('#post_raty');
+    let opt = {
+      // 星画像の指定などのオプションをここに記述,
+      size: 36,
+      starOff: '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHarf: '<%= asset_path('star-half.png') %>',
+//      half: true,
+    };
+    raty(elem,opt);
+  </script>
+
+  <div class="check_box">
+    <span>タグ</span>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div>
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="form-group">
     <%= f.submit "投稿する", class: "btn btn-success" %>
   </div>

@@ -10,6 +10,15 @@
     <div class="col-md-8 offset-md-1">
       <h2>生物一覧</h2>
 
+      <%= form_tag public_creatures_path, method: :get, class: 'boards__searchFrom' do %>
+        <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+          {
+            prompt: 'タグで絞り込み検索',
+            onchange: 'submit(this.from);'
+          }
+        %>
+      <% end %>
+
       <% if @creature.errors.any? %>
         <%= @creature.errors.count %>件のエラーが発生しました
       <ul>

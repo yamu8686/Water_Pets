@@ -4,6 +4,7 @@ class Public::CreaturesController < ApplicationController
     @creature = Creature.new
     @creatures = Creature.all
     @user = current_user
+    @creatures = params[:tag_id].present? ? Tag.find(params[:tag_id]).creatures : Creature.all
   end
 
   def create
@@ -12,12 +13,14 @@ class Public::CreaturesController < ApplicationController
 
     #投稿データに今ログイン中のユーザーのIDを持たせる
     @creature.user_id = current_user.id
+    byebug
     if @creature.save
       flash[:notice] = "投稿に成功しました"
       redirect_to public_creature_path(@creature)
     else
       flash[:alert]
       @creatures = Creature.all
+      @user = current_user
       render :index
     end
   end
@@ -52,6 +55,6 @@ class Public::CreaturesController < ApplicationController
   private
 
   def creature_params
-    params.require(:creature).permit(:name, :description, :image)
+    params.require(:creature).permit(:name, :description, :image, tag_ids: [])
   end
 end

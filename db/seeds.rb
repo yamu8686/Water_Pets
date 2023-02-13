@@ -11,3 +11,14 @@ User.create!(name: "admin",
              password: "admin1",
              password_confirmation: "admin1",
              admin: true)
+
+Tag.create([
+  { name: '熱帯魚' },
+  { name: '海水魚' },
+  { name: '川魚' },
+  { name: '甲殻類' },
+  { name: '貝類' },
+  { name: '古代魚' },
+  { name: '飼料用品' },
+  { name: '水槽器具' }
+  ])
