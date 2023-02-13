@@ -4,7 +4,9 @@
       <th>生体画像</th>
       <th>生体名</th>
       <th>生体説明</th>
-      <th colspan="3"></th>
+      <th>タグ</th>
+      <th>飼育難易度</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
   <tbody>
@@ -20,15 +22,34 @@
           <%= image_tag "no_image", size: "50×50" %>
           <% end %>
         <% end %>
-      </td>
-      <td><%= link_to creature.name,public_creature_path(creature.id) %></td>
-      <td><%= creature.description %></td>
-      <td>
+        </td>
+        <td><%= link_to creature.name,public_creature_path(creature.id) %></td>
+        <td><%= creature.description %></td>
+        <td>
         <% creature.tags.each do |tag| %>
           <%= tag.name %>
         <% end %>
-      </td>
+        </td>
+        <td id="raty_show<%= creature.id %>">
+        </td>
       </tr>
+
+  <script>
+    // scriptファイルをどのidの部分に配置するかを指定
+    var hoge = document.querySelector('#raty_show<%= creature.id%>');
+    var fuga = {
+      // 星画像の指定などのオプションをここに記述,
+      size: 36,
+      starOff: '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHarf: '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: <%= creature.rate %>
+    };
+    raty(hoge, fuga);
+  </script>
+
+
     <% end %>
   </tbody>
 </table>

@@ -13,7 +13,7 @@ class Public::CreaturesController < ApplicationController
 
     #投稿データに今ログイン中のユーザーのIDを持たせる
     @creature.user_id = current_user.id
-    byebug
+
     if @creature.save
       flash[:notice] = "投稿に成功しました"
       redirect_to public_creature_path(@creature)
@@ -55,6 +55,6 @@ class Public::CreaturesController < ApplicationController
   private
 
   def creature_params
-    params.require(:creature).permit(:name, :description, :image, tag_ids: [])
+    params.require(:creature).permit(:name, :description, :image, :rate, tag_ids: [])
   end
 end
