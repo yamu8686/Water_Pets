@@ -38,33 +38,21 @@
         </td>
       </tr>
 
-  <script>
-    // scriptファイルをどのidの部分に配置するかを指定
-    var hoge = document.querySelector('#raty_show<%= creature.id%>');
-    var fuga = {
-      // 星画像の指定などのオプションをここに記述,
-      size: 36,
-      starOff: '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHarf: '<%= asset_path('star-half.png') %>',
-      readOnly: true,
-      score: <%= creature.rate %>
-    };
-    raty(hoge, fuga);
-  </script>
-
+      <script>
+        // scriptファイルをどのidの部分に配置するかを指定
+        var hoge = document.querySelector('#raty_show<%= creature.id%>');
+        var fuga = {
+          // 星画像の指定などのオプションをここに記述,
+          size: 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHarf: '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= creature.rate %>
+        };
+        raty(hoge, fuga);
+      </script>
 
     <% end %>
   </tbody>
 </table>
-<% @creatures.each do |t| %>
-  <% if user_signed_in? %>
-    <% if current_user.id == t.user_id %>
-      <%= link_to "編集する", edit_creature_path(t.id) %>
-      <%= link_to "削除する", creature_path(t.id), method: :delete %>
-    <% elsif current_user.admin? %>
-      <%= link_to "管理者用編集", edit_creature_path(t.id) %>
-      <%= link_to "管理者用削除", creature_path(t.id), method: :delete %>
-    <% end %>
-  <% end %>
-<% end %>

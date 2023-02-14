@@ -9,7 +9,6 @@
 Admin.create!(
              email: "sample@admin",
              password: "admin1",
-             role: :staff
              )
 
 Tag.create([

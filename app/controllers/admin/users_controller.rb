@@ -8,6 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @creatures = Creature.all
   end
 
   def edit

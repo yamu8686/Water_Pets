@@ -1,2 +1,64 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+    <div class="col-md-6 offset-md-3">
+      <h2>投稿している生物一覧</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>生体画像</th>
+            <th>生体名</th>
+            <th>生体説明</th>
+            <th>タグ</th>
+            <th>飼育難易度</th>
+            <th colspan="4"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @creatures.each do |creature| %>
+            <tr>
+              <td>
+              <% if creature.image.attached? %>
+                <%= link_to public_creature_path(creature.id), style:"display:block" do %>
+                <%= image_tag creature.get_image(200, 100), class: "img-fluid" if creature.image.present? %>
+                <% end %>
+              <% else %>
+                <%= link_to public_creature_path(creature.id) do %>
+                <%= image_tag "no_image", size: "50×50" %>
+                <% end %>
+              <% end %>
+              </td>
+              <td><%= link_to creature.name,public_creature_path(creature.id) %></td>
+              <td><%= creature.description %></td>
+              <td>
+              <% creature.tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+              </td>
+              <td id="raty_show<%= creature.id %>">
+              </td>
+            </tr>
+
+        <script>
+          // scriptファイルをどのidの部分に配置するかを指定
+          var hoge = document.querySelector('#raty_show<%= creature.id%>');
+          var fuga = {
+            // 星画像の指定などのオプションをここに記述,
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHarf: '<%= asset_path('star-half.png') %>',
+            readOnly: true,
+            score: <%= creature.rate %>
+          };
+          raty(hoge, fuga);
+        </script>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="col-4 offset-4">
+        <%= link_to '編集する', edit_admin_user_path(@user), class: "btn btn-sm btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>

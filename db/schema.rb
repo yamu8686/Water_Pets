@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_075906) do
     t.integer "genre_id"
     t.string "name"
     t.string "description"
+    t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -103,7 +104,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_075906) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

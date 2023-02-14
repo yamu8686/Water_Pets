@@ -9,7 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       t.string :name
 
-      t.boolean :is_deleted
+      t.boolean :is_deleted, null: true, default: false
 
       ## Recoverable
       t.string   :reset_password_token

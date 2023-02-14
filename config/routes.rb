@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:new, :index, :edit, :create, :update]
     resources :creatures, only: [:index, :show, :edit, :destroy]
-    resources :users, only: [:index, :show, :edit]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
