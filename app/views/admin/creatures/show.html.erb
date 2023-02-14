@@ -1,2 +1,52 @@
-<h1>Admin::Creatures#show</h1>
-<p>Find me in app/views/admin/creatures/show.html.erb</p>
+<h2>生体飼育情報</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+
+            <td>
+              <!--リンクにするときはstyle:"display:block;"-->
+              <%= link_to public_user_path(@creature.user.id), style:"display:block;" do %>
+                <%= image_tag @creature.get_image(200, 200), class: "img-fluid" if @creature.image.present? %>
+                <%= @creature.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to public_creature_path(@creature.id) do %>
+                <%= @creature.description %>
+              <% end %>
+            </td>
+
+            <td>
+              <% @creature.tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+            </td>
+
+            <td id="raty_show<%= @creature.id %>">
+        </td>
+      </tr>
+
+      <script>
+        // scriptファイルをどのidの部分に配置するかを指定
+        var hoge = document.querySelector('#raty_show<%= @creature.id%>');
+        var fuga = {
+          // 星画像の指定などのオプションをここに記述,
+          size: 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHarf: '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= @creature.rate %>
+        };
+        raty(hoge, fuga);
+      </script>
+
+            <td><%= link_to "#{@creature.post_comments.count} コメント", public_creature_path(@creature.id) %></td>
+
+            <% if @creature.user == current_user %>
+              <td><%= link_to "編集する", edit_public_creature_path(@creature), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to "削除する", public_creature_path(@creature), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>

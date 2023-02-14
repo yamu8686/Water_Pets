@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      user: 会員情報
+      creature: 生物
+    attributes:
+      user:
+        name: ニックネーム
+        email: メールアドレス
+      creature:
+        name: 生体名
+        description: 生体説明

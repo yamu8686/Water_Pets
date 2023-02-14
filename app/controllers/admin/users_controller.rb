@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.all
-    @users = User.page(params[:page]).per(10)
+    #@users = User.page(params[:page]).per(10)
   end
 
   def show
@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user = User.update(user_params)
+    if @user.update(user_params)
       redirect_to admin_user_path(@user)
     else
       flash[:user_update_error] = "会員情報が正常に保存できませんでした。"
@@ -26,6 +26,6 @@ class Admin::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :is_active, :is_deleted)
+    params.require(:user).permit(:name, :email, :is_deleted)
   end
 end

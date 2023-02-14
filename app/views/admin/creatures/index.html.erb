@@ -1,3 +1,62 @@
+<h1>生物一覧</h1>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>生体画像</th>
+      <th>生体名</th>
+      <th>生体説明</th>
+      <th>タグ</th>
+      <th>飼育難易度</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @creatures.each do |creature| %>
+      <tr>
+        <td>
+        <% if creature.image.attached? %>
+          <%= link_to public_creature_path(creature.id), style:"display:block" do %>
+          <%= image_tag creature.get_image(200, 100), class: "img-fluid" if creature.image.present? %>
+          <% end %>
+        <% else %>
+          <%= link_to public_creature_path(creature.id) do %>
+          <%= image_tag "no_image", size: "50×50" %>
+          <% end %>
+        <% end %>
+        </td>
+        <td><%= link_to creature.name,public_creature_path(creature.id) %></td>
+        <td><%= creature.description %></td>
+        <td>
+        <% creature.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+        </td>
+        <td id="raty_show<%= creature.id %>">
+        </td>
+        <td>
+          <%= link_to '削除', admin_creature_path(creature.id), method: :delete, data: {confirm: '削除しますか？'} %>
+        </td>
+      </tr>
+
+  <script>
+    // scriptファイルをどのidの部分に配置するかを指定
+    var hoge = document.querySelector('#raty_show<%= creature.id%>');
+    var fuga = {
+      // 星画像の指定などのオプションをここに記述,
+      size: 36,
+      starOff: '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHarf: '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: <%= creature.rate %>
+    };
+    raty(hoge, fuga);
+  </script>
+
+
+    <% end %>
+  </tbody>
+</table>
 <% @creatures.each do |t| %>
   <% if user_signed_in? %>
     <% if current_user.id == t.user_id %>

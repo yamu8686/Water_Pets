@@ -1,13 +1,17 @@
-
+<ul class="nav justify-content-center">
   <li class="nav-item">
-    <%= link_to "About", destroy_user_session_path, method: :delete %>
+    <%= link_to "About", destroy_user_session_path, method: :delete, class: "nav-link text-light mr-5" %>
   </li>
+  <li class="nav-item">
+    <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-light mr-5" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "ログイン", new_user_session_path, class: "nav-link text-light mr-5" %>
+  </li>
+</ul>
+
   <!--<li>-->
     <%#= link_to "生物一覧", public_creatures_path %>
   <!--</li>-->
-  <li class="nav-item">
-    <%= link_to "新規登録", new_user_registration_path %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "ログイン", new_user_session_path %>
-  </li>
+
+

@@ -23,9 +23,36 @@
           <div class="navbar-collapse collapse show" id="navbarNavDropdown"style>
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
-                <%= render 'layouts/signin_admin_header' %>
+                <ul class="nav justify-content-center">
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light mr-5" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "会員一覧", admin_users_path, class: "nav-link text-light mr-5" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "投稿一覧", admin_creatures_path, class: "nav-link text-light mr-5" %>
+                  </li>
               <% elsif user_signed_in? %>
-                <%= render 'layouts/signin_user_header' %>
+                <ul class="nav justify-content-center">
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light mr-5" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "生物一覧", public_creatures_path, class: "nav-link text-light mr-5" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ユーザー一覧", public_users_path, class:"nav-link text-light mr-5" %>
+                  </li>
+                <!--<%# else %>-->
+                <!--  <li class="nav-item">-->
+                <!--    <%#= link_to "新規登録", new_user_registration_path, class:"nav-link text-light" %>-->
+                <!--  </li>-->
+                <!--  <li class="nav-item">-->
+                <!--    <%#= link_to "ログイン", new_user_session_path, class:"nav-link text-light" %>-->
+                <!--  </li>-->
+                <!--<%# end %>-->
+                </ul>
               <% else %>
                 <%= render 'layouts/signout_header' %>
               <% end %>
