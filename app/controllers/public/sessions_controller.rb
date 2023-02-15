@@ -19,6 +19,12 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to public_user_path(user), notice: 'guestuserでログインしました。'
+  end
+
   protected
   #退会しているか判断するメソッド。退会後は、同じアカウントでは利用できない。
   def user_state
@@ -44,12 +50,6 @@ class Public::SessionsController < Devise::SessionsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys:[:name])
-  end
-
-  def guest_sign_in
-    user = User.guest
-    sign_in user
-    redirect_to public_user_path(user), notice: 'guestuserでログインしました。'
   end
 
   # If you have extra params to permit, append them to the sanitizer.
