@@ -7,6 +7,7 @@ ja:
       user:
         name: ニックネーム
         email: メールアドレス
+        password: パスワード
       creature:
         name: 生体名
         description: 生体説明
