@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
+  devise_scope :public do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
   namespace :public do
     resources :users, only: [:index, :show, :edit, :create, :update]do
       resource :relationships, only: [:create, :destroy]

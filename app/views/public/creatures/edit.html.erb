@@ -12,14 +12,14 @@
         </ul>
       <% end %>
 
-      <%= form_with model: (Creature.new), url: public_creature_path(@creature.id),method: :patch do |f| %>
+      <%= form_with model: @creature, url: public_creature_path(@creature.id),method: :patch do |f| %>
         <h4>画像</h4>
           <%= f.file_field :image, accept: "image/*" %>
         <h4>生体名</h4>
           <%= f.text_field :name %>
         <h4>生体説明</h4>
           <%= f.text_area :description %>
-          <%= f.submit "保存する", class: "btn btn-success" %>
+          <%= f.submit "保存する", class: "btn btn-success " %>
       <% end %>
     </div>
   </div>

@@ -13,6 +13,10 @@
     <th><%= user.followers.count %></th>
   </tr>
 </table>
-<%= link_to edit_public_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
+<% if user.name != "guestuser" %>
+<div class='row'>
+  <%= link_to edit_public_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
   <i class="fas fa-user-edit"></i>
+  <% end %>
+</div>
 <% end %>
