@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
+    # ゲストログインのurlとコントローラ
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 

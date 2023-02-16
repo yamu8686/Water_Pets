@@ -11,6 +11,9 @@ class Creature < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
+  scope :published, -> {where(is_published_flag: false)}
+  scope :unpublished, -> {where(is_published_flag: true)}
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

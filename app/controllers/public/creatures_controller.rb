@@ -5,6 +5,7 @@ class Public::CreaturesController < ApplicationController
     @creatures = Creature.all
     @user = current_user
     @creatures = params[:tag_id].present? ? Tag.find(params[:tag_id]).creatures : Creature.all
+    @creatures = Creature.published
   end
 
   def create
@@ -55,6 +56,6 @@ class Public::CreaturesController < ApplicationController
   private
 
   def creature_params
-    params.require(:creature).permit(:name, :description, :image, :rate, tag_ids: [])
+    params.require(:creature).permit(:name, :description, :image, :rate, :is_published_flag, tag_ids: [] )
   end
 end
