@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @creatures = @user.creatures
+    @creatures = @user.creatures.page(params[:page])
     @creature = Creature.new
   end
 

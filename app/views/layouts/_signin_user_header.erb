@@ -1,12 +1,12 @@
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <%= link_to "マイページ", public_user_path(current_user.id), class: "nav-link text-light mr-5" %>
+    <%= link_to "マイページ", public_user_path(current_user.id), data: {"turbolinks" => false}, class: "nav-link text-light mr-5" %>
   </li>
   <li class="nav-item">
-    <%= link_to "生物一覧", public_creatures_path, class: "nav-link text-light mr-5" %>
+    <%= link_to "生物一覧", public_creatures_path, data: {"turbolinks" => false}, class: "nav-link text-light mr-5" %>
   </li>
   <li class="nav-item">
-    <%= link_to "ユーザー一覧", public_users_path, class:"nav-link text-light mr-5" %>
+    <%= link_to "ユーザー一覧", public_users_path, data: {"turbolinks" => false}, class:"nav-link text-light mr-5" %>
   </li>
   <li class="nav-item">
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light mr-5" %>

@@ -2,10 +2,10 @@ class Public::CreaturesController < ApplicationController
 
   def index
     @creature = Creature.new
-    @creatures = Creature.all
+   # @creatures = Creature.all.published
     @user = current_user
     @creatures = params[:tag_id].present? ? Tag.find(params[:tag_id]).creatures : Creature.all
-    @creatures = Creature.published
+    @creatures = @creatures.where(is_published_flag: false).page(params[:page]).per(10)
   end
 
   def create
@@ -40,6 +40,7 @@ class Public::CreaturesController < ApplicationController
   def update
     @creature = Creature.find(params[:id])
     if @creature.update(creature_params)
+      flash[:notice] = "編集に成功しました"
       redirect_to public_creature_path(@creature.id)
     else
       @creatures = Creature.all

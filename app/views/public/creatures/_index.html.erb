@@ -34,22 +34,22 @@
         </td>
       </tr>
 
-  <script>
-    // scriptファイルをどのidの部分に配置するかを指定
-    var hoge = document.querySelector('#raty_show<%= creature.id%>');
-    var fuga = {
-      // 星画像の指定などのオプションをここに記述,
-      size: 36,
-      starOff: '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHarf: '<%= asset_path('star-half.png') %>',
-      readOnly: true,
-      score: <%= creature.rate %>
-    };
-    raty(hoge, fuga);
-  </script>
-
+      <script>
+        // scriptファイルをどのidの部分に配置するかを指定
+        var hoge = document.querySelector('#raty_show<%= creature.id%>');
+        var fuga = {
+          // 星画像の指定などのオプションをここに記述,
+          size: 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHarf: '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= creature.rate %>
+        };
+        raty(hoge, fuga);
+      </script>
 
     <% end %>
+    <%= paginate creatures %>
   </tbody>
 </table>
