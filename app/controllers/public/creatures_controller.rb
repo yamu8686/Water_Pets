@@ -2,7 +2,6 @@ class Public::CreaturesController < ApplicationController
 
   def index
     @creature = Creature.new
-   # @creatures = Creature.all.published
     @user = current_user
     @creatures = params[:tag_id].present? ? Tag.find(params[:tag_id]).creatures : Creature.all
     @creatures = @creatures.where(is_published_flag: false).page(params[:page]).per(10)
