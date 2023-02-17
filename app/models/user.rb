@@ -9,6 +9,7 @@ class User < ApplicationRecord
          has_one_attached :profile_image
 
          validates :name, presence: true
+         validates :email, presence: true
 
          # フォローをした、されたの関係
          has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

@@ -19,6 +19,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "編集に成功しました"
       redirect_to public_user_path(@user)
     else
       @users = User.all
