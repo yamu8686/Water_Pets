@@ -64,6 +64,7 @@
 
           <tr>
             <td><%= link_to "#{@creature.post_comments.count} コメント", public_creature_path(@creature.id) %></td>
+            <td><%= render "public/post_comments/counter", creature: @creature %></td>
           </tr>
 
         </tbody>
