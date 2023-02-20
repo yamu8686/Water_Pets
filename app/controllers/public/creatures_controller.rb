@@ -1,4 +1,5 @@
 class Public::CreaturesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @creature = Creature.new

@@ -1,2 +1,3 @@
-$('.post-comments-counter').html("<%= j(render 'public/post_comments/counter', creature: @comment.creature) %>")
-$('.post-comments-index').html("<%= j(render 'public/post_comments/index', creature: @comment.creature) %>")
+$('#post_comment_counter').text("<%= @count %>")
+$('#post_comment_user_<%= @comment.id %>').remove()
+$('#post_comment_<%= @comment.id %>').remove()
