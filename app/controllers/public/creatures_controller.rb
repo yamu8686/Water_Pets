@@ -20,7 +20,8 @@ class Public::CreaturesController < ApplicationController
       redirect_to public_creature_path(@creature)
     else
       flash[:alert]
-      @creatures = Creature.all
+      @creatures = params[:tag_id].present? ? Tag.find(params[:tag_id]).creatures : Creature.all
+      @creatures = @creatures.where(is_published_flag: false).page(params[:page]).per(10)
       @user = current_user
       render :index
     end
