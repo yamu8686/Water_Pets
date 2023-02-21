@@ -13,10 +13,10 @@ ja:
         sign_up: アカウント登録
       signed_in: アカウント登録が完了しました。
     sessions:
-      new:
+      user:
         sign_in: ログイン
       signed_in: ログインしました。
-      sign_out: ログアウトしました。
+      signed_out: ログアウトしました。
     failure:
       already_authenticated: すでにログインしています。
       inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
