@@ -1,5 +1,6 @@
 class Public::CreaturesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show, :edit]
+
 
   def index
     @creature = Creature.new
@@ -60,4 +61,6 @@ class Public::CreaturesController < ApplicationController
   def creature_params
     params.require(:creature).permit(:name, :description, :image, :rate, :is_published_flag, tag_ids: [] )
   end
+
+
 end

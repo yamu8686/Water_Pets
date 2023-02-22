@@ -15,16 +15,12 @@
       <tr>
         <td>
         <% if creature.image.attached? %>
-          <%= link_to public_creature_path(creature.id), style:"display:block" do %>
           <%= image_tag creature.get_image(200, 100), class: "img-fluid" if creature.image.present? %>
-          <% end %>
         <% else %>
-          <%= link_to public_creature_path(creature.id) do %>
           <%= image_tag "no_image", size: "50×50" %>
-          <% end %>
         <% end %>
         </td>
-        <td><%= link_to creature.name,public_creature_path(creature.id) %></td>
+        <td><%= creature.name %></td>
         <td><%= creature.description %></td>
         <td>
         <% creature.tags.each do |tag| %>
@@ -34,7 +30,7 @@
         <td id="raty_show<%= creature.id %>">
         </td>
         <td>
-          <%= link_to '削除', admin_creature_path(creature.id), method: :delete, data: {confirm: '削除しますか？'} %>
+          <%= link_to '削除', admin_creature_path(creature.id), method: :delete, data: {confirm: '削除しますか？'}, class: "btn btn-sm btn-danger"  %>
         </td>
       </tr>
 

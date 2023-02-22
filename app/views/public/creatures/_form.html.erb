@@ -1,50 +1,52 @@
-<%= form_with model: (Creature.new), url: '/public/creatures' do |f| %>
-  <h4>画像</h4>
-  <div class="form-group">
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>
-  <h4>生体名</h4>
-  <div class="form-group">
-    <%= f.text_field :name, class: 'form-control creature_name' %>
-  </div>
-  <h4>生体説明</h4>
-  <div class="form-group">
-    <%= f.text_area :description, class: 'form-control creature_description' %>
-  </div>
-  <h4>飼育難易度</h4>
-
-  <div class="row">
-    <div class"col-12 position-static">
-      <div id="post_raty"></div>
+<% if @user.name != "guestuser" %>
+  <%= form_with model: (Creature.new), url: '/public/creatures' do |f| %>
+    <h4>画像</h4>
+    <div class="form-group">
+      <%= f.file_field :image, accept: "image/*" %>
     </div>
-  </div>
-  <script>
-    // scriptファイルをどのidの部分に配置するかを指定
-    let elem = document.querySelector('#post_raty');
-    let opt = {
-      // 星画像の指定などのオプションをここに記述,
-      size: 36,
-      starOff: '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHarf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'creature[rate]'
-    };
-    raty(elem,opt);
-  </script>
+    <h4>生体名</h4>
+    <div class="form-group">
+      <%= f.text_field :name, class: 'form-control creature_name' %>
+    </div>
+    <h4>生体説明</h4>
+    <div class="form-group">
+      <%= f.text_area :description, class: 'form-control creature_description' %>
+    </div>
+    <h4>飼育難易度</h4>
 
-  <div class="check_box">
-    <span>タグ</span>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-      <div>
-        <%= tag.label do %>
-          <%= tag.check_box %>
-          <%= tag.text %>
-        <% end %>
+    <div class="row">
+      <div class"col-12 position-static">
+        <div id="post_raty"></div>
       </div>
-    <% end %>
-  </div>
+    </div>
+    <script>
+      // scriptファイルをどのidの部分に配置するかを指定
+      let elem = document.querySelector('#post_raty');
+      let opt = {
+        // 星画像の指定などのオプションをここに記述,
+        size: 36,
+        starOff: '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHarf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'creature[rate]'
+      };
+      raty(elem,opt);
+    </script>
 
-  <div class="form-group">
-    <%= f.submit "投稿する", class: "btn btn-success" %>
-  </div>
+    <div class="check_box">
+      <span>タグ</span>
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <div>
+          <%= tag.label do %>
+            <%= tag.check_box %>
+            <%= tag.text %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "投稿する", class: "btn btn-success" %>
+    </div>
+  <% end %>
 <% end %>

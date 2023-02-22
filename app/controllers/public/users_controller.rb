@@ -9,6 +9,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @creatures = @user.creatures.page(params[:page])
+    #@creatures = @creatures.where(is_published_flag: false)
     @creature = Creature.new
   end
 

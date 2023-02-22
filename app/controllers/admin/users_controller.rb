@@ -2,13 +2,12 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
-    #@users = User.page(params[:page]).per(10)
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
-    @creatures = Creature.all
+    @creatures = @user.creatures.page(params[:page])
   end
 
   def edit
