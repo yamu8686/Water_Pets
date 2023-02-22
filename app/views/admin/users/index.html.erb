@@ -9,7 +9,7 @@
           <tr>
             <th>プロフ画像</th>
 
-            <th>ニックネーム</th>
+            <th class="pl-5">名前</th>
 
           </tr>
         </thead>
@@ -21,7 +21,7 @@
               <%= image_tag user.get_profile_image(100,100) %>
             </td>
 
-            <td>
+            <td class="pl-5">
               <%= link_to admin_user_path(user.id) do %>
                 <%= user.name %>
               <% end %>

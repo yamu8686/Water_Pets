@@ -1,4 +1,4 @@
-<% if @user.name != "guestuser" %>
+<% if @user.name != "guestuser" && current_user.name != "guestuser" %>
   <%= form_with model: (Creature.new), url: '/public/creatures' do |f| %>
     <h4>画像</h4>
     <div class="form-group">
