@@ -4,12 +4,14 @@
   会員でない方もゲストログインで閲覧や投稿ができます。<br>
   皆さんのアクアライフがよりよくなるようなサイトにしていきたいと思います。</p>
 
+  <div class="row">
+    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block md-3 sign_in", method: :post %>
+  </div>
+
   <p>
     <%= image_tag('water_00146.jpg',size: "600x400") %>
   </p>
 </div>
 <div class="btn-wrapper col-12 mx-auto">
-  <div class="row">
-    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block md-3 sign_in", method: :post %>
-  </div>
+
 </div>

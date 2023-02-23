@@ -11,9 +11,11 @@ ja:
     registrations:
       new:
         sign_up: アカウント登録
+      signed_up: アカウント登録しました。
       signed_in: アカウント登録が完了しました。
     sessions:
       user:
+
         sign_in: ログイン
       signed_in: ログインしました。
       signed_out: ログアウトしました。

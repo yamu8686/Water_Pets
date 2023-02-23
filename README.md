@@ -38,6 +38,8 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です
+- 水背景　フリー素材　https://th.bing.com/th/id/OIP.aMFYso7Zq3UxW24bsWalqgHaE7?pid=ImgDet&rs=1
+- 水中の情景（フリー素材）https://embed.pixiv.net/decorate.php?illust_id=46290215
+
 <!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
 <!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
