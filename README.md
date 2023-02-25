@@ -36,8 +36,12 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+- Bootstrap
+- enum
 
 ## 使用素材
+- tigrish/devise-i18n バリデーション日本語化
+- https://github.com/tigrish/devise-i18n/blob/master/rails/locales/ja.yml
 - 水背景　フリー素材
 - https://th.bing.com/th/id/OIP.aMFYso7Zq3UxW24bsWalqgHaE7?pid=ImgDet&rs=1
 - 水中の情景（フリー素材）
