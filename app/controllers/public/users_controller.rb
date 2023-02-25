@@ -2,13 +2,13 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(10)
     @user = User.new
   end
 
   def show
     @user = User.find(params[:id])
-    @creatures = @user.creatures.page(params[:page])
+    @creatures = @user.creatures.page(params[:page]).per(10)
     #@creatures = @creatures.where(is_published_flag: false)
     @creature = Creature.new
   end
