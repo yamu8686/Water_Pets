@@ -14,7 +14,7 @@
       <tr>
         <td>
           <%= link_to public_creature_path(creature.id), style:"display:block" do %>
-            <%= image_tag creature.get_image(200, 100), class: "img-fluid" %>
+            <%= image_tag creature.get_image(400, 200), class: "img-fluid" %>
           <% end %>
         </td>
         <td><%= link_to creature.name,public_creature_path(creature.id) %></td>
