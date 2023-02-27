@@ -9,9 +9,16 @@
       <%= render "public/creatures/form", creature: @creature %>
     </div>
     <div class="col-md-8 offset-md-1">
+      <% if current_user != @user %>
+        <% if current_user.followings?(@user) %>
+          <%= link_to "フォロー外す", public_user_relationships_path(@user.id), method: :delete %>
+        <% else %>
+          <%= link_to "フォローする", public_user_relationships_path(@user.id), method: :post %>
+        <% end %>
+      <% end %>
       <h2>投稿している生物一覧</h2>
       <%= render "public/creatures/index", creatures: @creatures %>
+      <%= paginate @creatures %>
     </div>
   </div>
-  <%= paginate @creatures %>
 </div>
