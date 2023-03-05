@@ -9,8 +9,10 @@
           <th>生物の色</th>
         </thead>
         <tbody>
+          <% @genres.each do |genre| %>
           <tr>
-            <td><% @genres.each do |genre| %></td>
+            <td><%= genre.name %></td>
+            <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
           </tr>
         </tbody>
       </table>
