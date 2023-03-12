@@ -15,7 +15,19 @@
  */
 
 @media screen and (max-width: 425px){
-  .content .btn {
-    font-size: 16;
+  header {
+    width: 100%;
+  }
+
+  .nav-list{
+    width: 100%;
+  }
+
+  .nav-list-item {
+    width: 100%;
+  }
+
+  main {
+    width: 100%;
   }
 }
