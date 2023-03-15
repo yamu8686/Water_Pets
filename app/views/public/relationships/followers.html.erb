@@ -1,12 +1,26 @@
 <div class="text-center">
   <h2>フォロワー一覧</h2>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-4 offset-4">
-      <% @users.each do |user| %>
-        <%= userr.name %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<table align="center">
+  <thead>
+    <tr>
+      <th>プロフ画像</th>
+      <th>ニックネーム</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= image_tag user.get_profile_image(100,100) %>
+      </td>
+      <td>
+        <%= link_to public_user_path(user.id) do %>
+        <%= user.name %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

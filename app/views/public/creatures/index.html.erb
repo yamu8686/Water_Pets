@@ -6,7 +6,8 @@
       <h2 class="mt-3">生体投稿</h2>
 
       <% if @creature.errors.any? %>
-        <%= @creature.errors.count %>件のエラーが発生しました
+        <%= @creature.errors.count %>件のエラーが発生しました</br>
+        生体名と生体説明を入力してください
       <ul>
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>

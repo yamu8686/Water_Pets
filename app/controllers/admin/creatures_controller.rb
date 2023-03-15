@@ -1,5 +1,5 @@
 class Admin::CreaturesController < ApplicationController
-  before_action :authenticate_admin!, except: [:show, :edit]
+  before_action :authenticate_admin!, except: [:index, :show, :edit]
   def index
     @creatures = Creature.all
   end
