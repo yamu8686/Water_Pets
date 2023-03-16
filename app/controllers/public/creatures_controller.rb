@@ -6,7 +6,7 @@ class Public::CreaturesController < ApplicationController
     @creature = Creature.new
     @user = current_user
     @creatures = params[:tag_id].present? ? Tag.find(params[:tag_id]).creatures : Creature.all
-    @creatures = @creatures.where(is_published_flag: false).page(params[:page]).per(10)
+    @creatures = @creatures.where(is_published_flag: false).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def create

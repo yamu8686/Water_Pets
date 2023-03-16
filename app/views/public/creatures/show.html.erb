@@ -36,12 +36,12 @@
             <td id="raty_show<%= @creature.id %>">
             </td>
           </tr>
-
             <script>
               // scriptファイルをどのidの部分に配置するかを指定
               var hoge = document.querySelector('#raty_show<%= @creature.id%>');
               var fuga = {
                 // 星画像の指定などのオプションをここに記述,
+
                 size: 36,
                 starOff: '<%= asset_path('star-off.png') %>',
                 starOn : '<%= asset_path('star-on.png') %>',
