@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
   def index
     @users = User.all.page(params[:page]).per(10)
@@ -33,6 +34,11 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image)
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(public_users_path) unless @user == current_user
   end
 
   def ensure_guest_user
