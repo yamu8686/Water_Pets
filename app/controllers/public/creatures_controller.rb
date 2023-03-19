@@ -1,6 +1,6 @@
 class Public::CreaturesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :edit]
-
+  before_action :currect_user, only: [:edit, :update]
 
   def index
     @creature = Creature.new
@@ -62,5 +62,9 @@ class Public::CreaturesController < ApplicationController
     params.require(:creature).permit(:name, :description, :image, :rate, :is_published_flag, tag_ids: [] )
   end
 
-
+  def currect_user
+    @creature = Creature.find(params[:id])
+    @user = @creature.user
+    redirect_to (public_creatures_path) unless @user == current_user
+  end
 end
