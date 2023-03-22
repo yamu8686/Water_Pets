@@ -1,17 +1,19 @@
 class Admin::GenresController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @genre = Genre.new
   end
 
   def index
     @genres = Genre.all
+    @genre = Genre.new
   end
 
   def create
     # 1と2. データを受け取り新規登録するためのインスタンス作成
-    genre = Genre.new(genre_params)
+    @genre = Genre.new(genre_params)
     # 3. データをデータベースに保存するためのsaveメソッド
-    genre.save
+    @genre.save
     redirect_to admin_genres_path
   end
 
@@ -28,6 +30,6 @@ class Admin::GenresController < ApplicationController
   private
   # ストロングパラメータ
   def genre_params
-    params.require(:genre).permit(:name, :color)
+    params.require(:genre).permit(:name)
   end
 end
